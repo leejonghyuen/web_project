@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Modules\Frontend\Controllers;
+namespace Modules\Modules\Web\Controllers;
 
 use Modules\Models\Services\Services;
 

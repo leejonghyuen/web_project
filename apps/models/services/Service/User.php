@@ -1,12 +1,18 @@
 <?php
 namespace Modules\Models\Services\Service;
 
-use Modules\Models\Repositories\Repositories;
+use Modules\Models\Entities\User as EntityUser;
 
 class User
 {
     public function getLast()
     {
-        return Repositories::getRepository('User')->getLast();
+    	$users = new EntityUser();
+    	return $users->find(
+    			array(
+    				'order' => 'email DESC, phone',
+    				'limit' => 1
+    			)
+    		);
     }
 }
