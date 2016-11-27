@@ -8,10 +8,19 @@ class IndexController extends ControllerBase
 {
     public function indexAction()
     {
-        try {
-            $this->view->users = Services::getService('User')->getLast();
-        } catch (\Exception $e) {
-            $this->flash->error($e->getMessage());
-        }
+    	// var_dump( Services::getService('User')->Register( array(
+    	// 	'email' => 'grandmorning@hotmail.com',
+    	// 	'password' => '1q2w3e4r',
+    	// 	'phone' => '01033955249'
+    	// )));
+
+    	var_dump( Services::getService('User')->Login( 'grandmorning@hotmail.com', '1q2w3e4r'));exit;
+
+    	exit;
+        // try {
+        //     $this->view->users = Services::getService('User')->getLast();
+        // } catch (\Exception $e) {
+        //     $this->flash->error($e->getMessage());
+        // }
     }
 }

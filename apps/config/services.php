@@ -8,17 +8,30 @@ use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+use Phalcon\Security;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
 
- $di->set('config', function() {
+$di->set('config', function() {
     $config = new \Phalcon\Config\Adapter\Ini(__DIR__ . '/config.ini');
 
     return $config;
 });
+
+$di->set(
+    "security",
+    function () {
+        $security = new Security();
+
+        // Set the password hashing factor to 12 rounds
+        $security->setWorkFactor(12);
+
+        return $security;
+    }
+);
 
 /**
  * Registering a router

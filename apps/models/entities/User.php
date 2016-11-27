@@ -2,28 +2,39 @@
 
 namespace Modules\Models\Entities;
 
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Email as EmailValidator;
+use Phalcon\Validation,
+    Phalcon\Validation\Validator\Uniqueness as UniquenessValidator,
+    Phalcon\Validation\Validator\Email as EmailValidator,
+    Phalcon\Validation\Validator\StringLength as StringLengthValidator;
 
 class User extends BaseModel
 {
     /**
      * Validations and business logic
      */
-    // public function validation()
-    // {
-    //     $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    //     $validator->add(
-    //         'email', // your field name
-    //         new EmailValidator([
-    //             'model' => $this,
-    //             "message" => 'Please enter a correct email address'
-    //         ])
-    //     );
+        $validator->add(
+            'email', // your field name
+            new EmailValidator()
+        );
 
-    //     return $this->validate($validator);
-    // }
+        $validator->add(
+            'email', // your field name
+            new UniquenessValidator()
+        );
+
+        $validator->add(
+            'email', // your field name
+            new StringLengthValidator([
+                 'max' => 255
+            ])
+        );
+
+        return $this->validate( $validator);
+    }
 
     public function columnMap()
     {
