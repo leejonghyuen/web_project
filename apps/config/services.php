@@ -9,6 +9,11 @@ use Phalcon\DI\FactoryDefault;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Security;
+use Whoops\Run;
+
+$whoops = new Run;
+$whoops->pushHandler( new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
