@@ -12,7 +12,9 @@ class Room
 
     public function GenerateUrl()
     {
-        return $this->CreateUrl();
+        // $url = 'host address' . $this->CreateInterphoneRoomUid();
+        $url = $this->CreateInterphoneRoomUid();
+        return $url;
     }
 
     public function NotificationToOwner( $ownerAddress, $interphoneType)
@@ -20,7 +22,7 @@ class Room
 
     }
 
-    private function CreateUrl()
+    private function CreateInterphoneRoomUid()
     {
         $di = \Phalcon\Di::getDefault();
         $oSecurity = $di->get('security');
