@@ -47,8 +47,7 @@ class User
 
     public function getLast()
     {
-    	$users = new EntityUser();
-    	return $users->find(
+    	return EntityUser::find(
     			array(
     				'order' => 'email DESC, phone',
     				'limit' => 1

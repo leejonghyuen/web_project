@@ -7,43 +7,20 @@ use Phalcon\Validation,
     Phalcon\Validation\Validator\Email as EmailValidator,
     Phalcon\Validation\Validator\StringLength as StringLengthValidator;
 
-class User extends BaseModel
+class Interphone extends BaseModel
 {
     public function initialize() {
         parent::initialize();
 
-        $this->hasMany(
-            'id',
-            '\Modules\Models\Entities\Interphone',
-            'userId',
-            array(
-                'alias' => 'interphones'
-            )
-        );
+        $this->hasOne('id', 'Modules\Models\Entities\InterphoneType', 'typeId', array('alias' => 'type'));
     }
+
     /**
      * Validations and business logic
      */
     public function validation()
     {
         $validator = new Validation();
-
-        $validator->add(
-            'email', // your field name
-            new EmailValidator()
-        );
-
-        $validator->add(
-            'email', // your field name
-            new UniquenessValidator()
-        );
-
-        $validator->add(
-            'email', // your field name
-            new StringLengthValidator([
-                 'max' => 255
-            ])
-        );
 
         return $this->validate( $validator);
     }
@@ -53,9 +30,10 @@ class User extends BaseModel
         return
             array(
                 'id' => 'id',
-                'email' => 'email',
-                'password' => 'password',
-                'phone' => 'phone',
+                'user_id' => 'userId',
+                'type_id' => 'typeId',
+                'address' => 'address',
+                'ip' => 'ip',
                 'created' => 'created',
                 'modified' => 'modified'
             );
@@ -63,6 +41,6 @@ class User extends BaseModel
 
     public function getSource()
     {
-        return 'user';
+        return 'interphone';
     }
 }

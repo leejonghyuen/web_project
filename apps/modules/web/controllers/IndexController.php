@@ -14,8 +14,9 @@ class IndexController extends ControllerBase
     	// 	'phone' => '01033955249'
     	// )));
 
-    	var_dump( Services::getService('User')->Login( 'grandmorning@hotmail.com', '1q2w3e4r'));exit;
+    	// var_dump( Services::getService('User')->Login( 'grandmorning@hotmail.com', '1q2w3e4r'));exit;
 
+    	var_dump( Services::getService('Room')->GenerateUrl( 'testing'));exit;
     	exit;
         // try {
         //     $this->view->users = Services::getService('User')->getLast();
