@@ -3,7 +3,7 @@ namespace Modules\Models\Services\Service;
 
 use Modules\Models\Entities\Interphone as EntityInterphone;
 
-class Room
+class Interphone
 {
     public function GetUserInterphones( $ownerAddress)
     {
