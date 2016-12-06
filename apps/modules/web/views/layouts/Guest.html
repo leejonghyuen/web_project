@@ -15,6 +15,12 @@
 
       <div class="col-md-12">
         <h1 class="page-header" id="userStat">Guest</h1>
+
+
+        <div class="btn-group">
+         <button type="button" class="btn btn-default" id="Join" onClick="location.href = 'Join.html'">Join</button>
+          <button type="button" class="btn btn-default" id="Login" onClick="location.href = 'login.html'">Login</button>
+        </div>
       </div>
 
       <div class="col-md-6 col-md-offset-3 hide">
@@ -29,26 +35,14 @@
     <div class="row">
       <div class="col-md-2">
 
-        <h2 class="h3">Profile/Config</h2>
-        <h3 class="h4">User Id</h3>
+        <h2 class="h3 profile">Profile/Config</h2>
+        <h3 class="h4 userid">User Id</h3>
 
         <form class="form-inline">
           <div class="form-group">
             <label for="userId" class="sr-only">User Id</label>
-            <input type="text" class="form-control" id="userId" placeholder="Enter your user id." value="">
+            <input type="text" class="form-control" id="userId" placeholder="Enter your user email." value="">
           </div>
-    <!-- <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email">
-        </div> -->
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox"> Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-default" id="IdPwdSubmit" onClick="location.href='Owner.html'">Submit</button>
       </form>
 
         <h2 class="h3">Channel</h2>
@@ -65,7 +59,7 @@
           <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Disconnect
         </button>
 
-         <h3 class="h4">Connect</h3>
+         <h3 class="h4 Connecth3">Connect</h3>
          <button class="btn btn-default btn-sm" id="refreshChannel">
           <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
         </button>

@@ -17,7 +17,7 @@
  var remoteVideo = document.querySelector('#remoteVideo');
  var localVideo = document.querySelector('#localVideo');
 
- var userIdInput = '';//document.querySelector('#userId');
+ var userIdInput = document.querySelector('#userId');
 
  var userStat = document.querySelector('#userStat');
 

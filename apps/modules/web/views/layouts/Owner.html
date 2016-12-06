@@ -44,10 +44,26 @@
         </button>
 
          <h3 class="h4">Connect</h3>
-         <button class="btn btn-default btn-sm" id="refreshChannel">
-          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
-        </button>
-         <div class="list-group channel-list" id="channelList"></div>
+
+        <form class="form-inline">
+          <div class="form-group">
+            <label class="sr-only" for="connectChannelId">Channel Id</label>
+            <input class="form-control" type="text" id="connectChannelId" placeholder="Enter the ChannelId." value="">
+          </div>
+          <button class="btn btn-default" id="connectChannel">
+            <span class="glyphicon glyphicon-earphone" aria-hidden="true"> Connect channel
+            </button>
+            <button class="btn btn-default btn-sm" id="refreshChannel">
+              <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+            </button>
+            <button type="button" class="btn btn-default" id="open" onClick="location.href='..\..\..\..\models\services\Service\Doorlock.php'" method="post">Open</button>
+          </form>
+
+         <div class="btn-group"></div>
+
+
+
+         <!-- <div class="list-group channel-list" id="channelList"></div> -->
        </div>
 
 <div class="chat-timeline" id="timeline"></div>

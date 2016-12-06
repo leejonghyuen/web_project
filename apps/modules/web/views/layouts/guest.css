@@ -1,8 +1,5 @@
-/* #Remote{
+.form-inline, .from-group, .videoArea, .userid, .profile, .channel-list, .Connecth3, #refreshChannel{
   display:none;
-} */
-.videoArea{
- display: none;
 }
     .local-video {
       width: 165px;
