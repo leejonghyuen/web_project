@@ -1,3 +1,9 @@
+/* #Remote{
+  display:none;
+} */
+.videoArea{
+ display: none;
+}
     .local-video {
       width: 165px;
       height: 165px;
@@ -16,9 +22,10 @@
     }
 
     .chat-timeline {
-      height: 200px;
-      font-size: 9px;
+      height: 100px;
+      font-size: 10px;
       overflow: auto;
+      background-color: lightgray;
     }
 
     .chat-timeline .local {
@@ -28,3 +35,14 @@
     .chat-timeline .remote {
       color: red;
     }
+
+    .ownerView {
+        display: block;
+    }
+/*     div.removeForGuestView {
+  display: none;
+}
+
+div.removeForOwnerView {
+  display: none;
+} */
