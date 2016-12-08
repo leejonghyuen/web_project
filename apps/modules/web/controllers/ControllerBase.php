@@ -7,10 +7,14 @@ class ControllerBase extends Controller
 {
 	public function initialize()
 	{
+    	$this->assets->addCss("css/common.css", true);
+
         $this->view->setTemplateBefore('header');
+        $headerCollection = $this->assets->collection("header");
+        $headerCollection->addCss("css/header.css", true);
+
         $this->view->setTemplateAfter('footer');
         $footerCollection = $this->assets->collection("footer");
-        // var_dump($this->assets->getOptions());exit;
         $footerCollection->addCss("css/footer.css", true);
 	}
 }

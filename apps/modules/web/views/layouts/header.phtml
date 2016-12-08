@@ -1,6 +1,20 @@
-header
+<header class="header-login-signup">
 
-<a href='/register'>회원가입</a>
-<a href='/login'>로그인</a>
+	<div class="header-limiter">
+
+		<h1><a href="/">Inter<span>phone</span></a></h1>
+
+		<nav>
+			<a href="/about" class="selected">About</a>
+		</nav>
+
+		<ul>
+			<li><a href='/login'>로그인</a></li>
+			<li><a href='/register'>회원가입</a></li>
+		</ul>
+
+	</div>
+
+</header>
 
 <?php echo $this->getContent(); ?>

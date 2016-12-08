@@ -1,19 +1,43 @@
+<form class="form-register" method="post" action="/user/register">
 
-  <form class="form-inline" action="/user/register" method="post">
-  <div class="form-group">
-    <label for="userId">email</label>
-    <input type="text" name='email' class="form-control" id="userId" placeholder="이메일을 입력해주세요" value="">
-  </div>
-  <div class="form-group">
-    <label for="phone">phone:</label>
-    <input type="tel" name='phone' class="form-control" id="phone" placeholder="Enter phone number">
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" name='password' class="form-control" id="pwd" placeholder="Enter password">
-  </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-default" id="IdPwdSubmit">Submit</button>
+    <div class="form-register-with-email">
+
+        <div class="form-white-background">
+
+            <div class="form-title-row">
+                <h1>회원가입</h1>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>이메일</span>
+                    <input type="email" name="email">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>비밀번호</span>
+                    <input type="password" name="password">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>핸드폰 번호</span>
+                    <input type="text" name="phone">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <button type="submit">Register</button>
+            </div>
+
+            <a href="/login" class="form-log-in-with-existing">이미 계정이 있으세요?</a>
+
+        </div>
+
+
+    </div>
+
 </form>
