@@ -4,6 +4,7 @@ namespace Modules\Modules\Web;
 
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
+use Phalcon\Assets\Manager as Assets;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 

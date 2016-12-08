@@ -9,5 +9,8 @@ class ControllerBase extends Controller
 	{
         $this->view->setTemplateBefore('header');
         $this->view->setTemplateAfter('footer');
+        $footerCollection = $this->assets->collection("footer");
+        // var_dump($this->assets->getOptions());exit;
+        $footerCollection->addCss("css/footer.css", true);
 	}
 }
