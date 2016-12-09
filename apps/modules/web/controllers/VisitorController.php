@@ -14,4 +14,17 @@ class VisitorController extends ControllerBase
 
         $this->view->pick('visitor/index');
     }
+
+    public function openedAction()
+    {
+        $this->view->disable();
+        if( $this->request->isPost()) {
+            if( $this->security->checkToken()) {
+
+
+		        $this->response->setContent( json_encode(['abc' => 'testing']));
+		        return $this->response;
+            }
+        }
+    }
 }
