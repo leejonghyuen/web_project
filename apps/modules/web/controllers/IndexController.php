@@ -19,18 +19,9 @@ class IndexController extends ControllerBase
 
         return $this->dispatcher->forward(
                     [
-                        "controller" => "index",
-                        "action"     => "guest"
+                        "controller" => "visitor",
+                        "action"     => "index"
                     ]
                 );
-    }
-
-    public function guestAction()
-    {
-        $this->assets->addCss("css/guest.css", true);
-        $this->assets->addJs("js/playrtc.min.js", true);
-        $this->assets->addJs("js/guest.js", true);
-
-        $this->view->pick('guest/index');
     }
 }
