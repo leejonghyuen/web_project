@@ -2,11 +2,12 @@
 
 namespace Modules\Modules\Web;
 
-use Phalcon\Loader;
-use Phalcon\Mvc\View;
-use Phalcon\Flash\Session as FlashSession;
-use Phalcon\DiInterface;
-use Phalcon\Mvc\ModuleDefinitionInterface;
+use Phalcon\Loader,
+    Phalcon\Mvc\View,
+    Phalcon\Flash\Session as FlashSession,
+    Phalcon\DiInterface,
+    Phalcon\Mvc\Dispatcher,
+    Phalcon\Mvc\ModuleDefinitionInterface;
 
 class Module implements ModuleDefinitionInterface
 {
@@ -50,6 +51,52 @@ class Module implements ModuleDefinitionInterface
                 return $view;
             }
         );
+
+        $evManager = $di->getShared('eventsManager');
+
+        $evManager->attach(
+            "dispatch:beforeException",
+            function($event, $dispatcher, $exception)
+            {
+                // Handle 404 exceptions
+                // if ($exception instanceof DispatchException) {
+                //     $dispatcher->forward(
+                //         array(
+                //             'controller' => 'error',
+                //             'action'     => 'notFound'
+                //         )
+                //     );
+
+                //     return false;
+                // }
+
+                // Alternative way, controller or action doesn't exist
+                switch ($exception->getCode()) {
+                    case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                    case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                        $dispatcher->forward(
+                            array(
+                                'controller' => 'error',
+                                'action'     => 'notFound'
+                            )
+                        );
+
+                        return false;
+                    default:
+                        $dispatcher->forward(
+                            array(
+                                'controller' => 'error',
+                                'action' => 'index'
+                            )
+                        );
+                        return false;
+
+                        break;
+                }
+            }
+        );
+
+        $di->get('dispatcher')->setEventsManager( $evManager);
 
         $di->set(
             "flashSession",

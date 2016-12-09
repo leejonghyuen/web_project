@@ -7,6 +7,7 @@ class ControllerBase extends Controller
 {
 	public function initialize()
 	{
+        $this->assets->addCss("css/normalize.css", true);
     	$this->assets->addCss("css/common.css", true);
 
         $this->view->setTemplateBefore('header');

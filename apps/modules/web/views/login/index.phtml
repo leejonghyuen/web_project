@@ -1,4 +1,4 @@
-<form class="form-login" method="post" action="/user/login">
+<form class="form-login width-limiter" method="post" action="/user/login">
     
     <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
         value="<?= $this->security->getToken() ?>"/>
