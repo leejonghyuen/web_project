@@ -1,5 +1,6 @@
  'use strict';
 
+window.onload = function(){
  var createChannelButton = document.querySelector('#createChannel');
  var createChannelIdInput = document.querySelector('#createChannelId');
  var refreshChannelButton = document.querySelector('#refreshChannel');
@@ -18,7 +19,6 @@
  var localVideo = document.querySelector('#localVideo');
 
  var userIdInput = document.querySelector('#userId');
- var IdPwdSubmit = document.querySelector('#IdPwdSubmit');
 
  var userStat = document.querySelector('#userStat');
 
@@ -174,11 +174,6 @@ sendTextButton.addEventListener('click', function (event) {
   sendMessageInput.value = '';
 }, false);
 
-IdPwdSubmit.addEventListener('click', function (event) {
-  location.href="Owner.html";
-
-  // this.link("Owner.html")
-}, false);
 /*window.onload= function(){
   $("sendId").onclick=logIn;
 }
@@ -196,3 +191,4 @@ function logIn(event) {
   // Remote.addClassName("ownerView");
 
 }, false);*/
+};
