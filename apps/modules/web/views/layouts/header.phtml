@@ -9,12 +9,18 @@
 		</nav>
 
 		<ul>
+		<?php if( $this->session->has('auth') === false) { ?>
 			<li><a href='/login'>로그인</a></li>
 			<li><a href='/register'>회원가입</a></li>
+		<?php } else { ?>
+			<li><a href='/user/logout'>로그아웃</a></li>
+		<?php } ?>
 		</ul>
 
 	</div>
 
 </header>
+
+<p><?= $this->flashSession->output(); ?></p>
 
 <?php echo $this->getContent(); ?>

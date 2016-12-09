@@ -1,5 +1,8 @@
 <form class="form-register" method="post" action="/user/register">
 
+    <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
+        value="<?= $this->security->getToken() ?>"/>
+
     <div class="form-register-with-email">
 
         <div class="form-white-background">
@@ -30,7 +33,7 @@
             </div>
 
             <div class="form-row">
-                <button type="submit">Register</button>
+                <button type="submit">가입하기</button>
             </div>
 
             <a href="/login" class="form-log-in-with-existing">이미 계정이 있으세요?</a>

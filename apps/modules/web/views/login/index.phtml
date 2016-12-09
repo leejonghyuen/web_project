@@ -1,4 +1,7 @@
 <form class="form-login" method="post" action="/user/login">
+    
+    <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
+        value="<?= $this->security->getToken() ?>"/>
 
     <div class="form-log-in-with-email">
 

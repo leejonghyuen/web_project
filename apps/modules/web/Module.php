@@ -4,7 +4,7 @@ namespace Modules\Modules\Web;
 
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
-use Phalcon\Assets\Manager as Assets;
+use Phalcon\Flash\Session as FlashSession;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 
@@ -41,11 +41,29 @@ class Module implements ModuleDefinitionInterface
         /**
          * Setting up the view component
          */
-        $di['view'] = function () {
-            $view = new View();
-            $view->setViewsDir(__DIR__ . '/views/');
+        $di->set(
+            'view',
+            function () {
+                $view = new View();
+                $view->setViewsDir(__DIR__ . '/views/');
 
-            return $view;
-        };
+                return $view;
+            }
+        );
+
+        $di->set(
+            "flashSession",
+            function () {
+                return new FlashSession(
+                    [
+                        "error"   => "alert alert-danger",
+                        "success" => "alert alert-success",
+                        "notice"  => "alert alert-info",
+                        "warning" => "alert alert-warning",
+                    ]
+                );
+            }
+        );
+
     }
 }
