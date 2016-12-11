@@ -2,25 +2,186 @@
 
 namespace Modules\Models\Entities;
 
-use Phalcon\Validation,
-    Phalcon\Validation\Validator\Uniqueness as UniquenessValidator,
-    Phalcon\Validation\Validator\Email as EmailValidator,
-    Phalcon\Validation\Validator\StringLength as StringLengthValidator;
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Email as EmailValidator;
 
-class User extends BaseModel
+class User extends Model
 {
-    public function initialize() {
-        parent::initialize();
+    /**
+     *
+     * @var integer
+     */
+    protected $iduser;
 
-        $this->hasMany(
-            'id',
-            '\Modules\Models\Entities\Interphone',
-            'userId',
-            array(
-                'alias' => 'interphones'
-            )
-        );
+    /**
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     *
+     * @var string
+     */
+    protected $username;
+
+    /**
+     *
+     * @var string
+     */
+    protected $email;
+
+    /**
+     *
+     * @var string
+     */
+    protected $password;
+
+    /**
+     *
+     * @var string
+     */
+    protected $datetime;
+
+    /**
+     * Method to set the value of field iduser
+     *
+     * @param integer $iduser
+     * @return $this
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+
+        return $this;
     }
+
+    /**
+     * Method to set the value of field name
+     *
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field username
+     *
+     * @param string $username
+     * @return $this
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field email
+     *
+     * @param string $email
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field password
+     *
+     * @param string $password
+     * @return $this
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field datetime
+     *
+     * @param string $datetime
+     * @return $this
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * Returns the value of field iduser
+     *
+     * @return integer
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * Returns the value of field name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Returns the value of field username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Returns the value of field email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Returns the value of field password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Returns the value of field datetime
+     *
+     * @return string
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
+    }
+
     /**
      * Validations and business logic
      */
@@ -30,35 +191,13 @@ class User extends BaseModel
 
         $validator->add(
             'email', // your field name
-            new EmailValidator()
-        );
-
-        $validator->add(
-            'email', // your field name
-            new UniquenessValidator()
-        );
-
-        $validator->add(
-            'email', // your field name
-            new StringLengthValidator([
-                 'max' => 255
+            new EmailValidator([
+                'model' => $this,
+                "message" => 'Please enter a correct email address'
             ])
         );
 
-        return $this->validate( $validator);
-    }
-
-    public function columnMap()
-    {
-        return
-            array(
-                'id' => 'id',
-                'email' => 'email',
-                'password' => 'password',
-                'phone' => 'phone',
-                'created' => 'created',
-                'modified' => 'modified'
-            );
+        return $this->validate($validator);
     }
 
     public function getSource()

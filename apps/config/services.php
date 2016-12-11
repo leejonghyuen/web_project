@@ -7,40 +7,11 @@ use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-use Phalcon\Security;
-
-use Whoops\Run;
-
-$whoops = new Run;
-if( getenv( 'DEV_ENV') && getenv( 'DEV_ENV') === 'develop')
-{
-    $whoops->pushHandler( new \Whoops\Handler\PrettyPageHandler);
-    $whoops->register();
-}
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
-
-$di->set('config', function() {
-    $config = new \Phalcon\Config\Adapter\Ini(__DIR__ . '/config.ini');
-
-    return $config;
-});
-
-$di->set(
-    "security",
-    function () {
-        $security = new Security();
-
-        // Set the password hashing factor to 12 rounds
-        $security->setWorkFactor(12);
-
-        return $security;
-    }
-);
 
 /**
  * Registering a router
@@ -49,8 +20,8 @@ $di['router'] = function () {
 
     $router = new Router();
 
-    $router->setDefaultModule("web");
-    $router->setDefaultNamespace("Modules\Modules\Web\Controllers");
+    $router->setDefaultModule("frontend");
+    $router->setDefaultNamespace("Modules\Modules\Frontend\Controllers");
     
     $router->setUriSource(\Phalcon\Mvc\Router::URI_SOURCE_SERVER_REQUEST_URI);
     
@@ -77,19 +48,4 @@ $di['session'] = function () {
     $session->start();
 
     return $session;
-};
-
-/**
- * Database connection is created based in the parameters defined in the configuration file
- */
-$di['db'] = function () use ( $di) {
-    $config = $di->get('config');
-    return new DbAdapter(
-        [
-            "host" => $config->database->host,
-            "username" => $config->database->username,
-            "password" => $config->database->password,
-            "dbname" => $config->database->dbname
-        ]
-    );
 };
