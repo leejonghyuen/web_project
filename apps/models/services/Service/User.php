@@ -16,8 +16,9 @@ class User
         $oUser = new EntityUser();
 
         $oUser->email = $userData['email'];
-        $oUser->phone = $userData['phone'];
         $oUser->password = $oSecurity->hash( $userData['password']);
+        $oUser->kakaoId = $userData['kakaoId'];
+        $oUser->address = $userData['address'];
 
         if( $oUser->save())
             return $oUser->id;
@@ -36,7 +37,8 @@ class User
                 return array(
                         'id' => $oUser->id,
                         'email' => $oUser->email,
-                        'phone' => $oUser->phone
+                        'kakaoId' => $oUser->kakaoId,
+                        'address' => $oUser->address
                     );
             }
             else

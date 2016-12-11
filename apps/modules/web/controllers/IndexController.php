@@ -8,7 +8,6 @@ class IndexController extends ControllerBase
 {
     public function indexAction()
     {
-
     	// var_dump( Services::getService('Interphone')->GenerateUrl( 'testing'));exit;
     	// exit;
         // try {
@@ -20,7 +19,7 @@ class IndexController extends ControllerBase
         return $this->dispatcher->forward(
                     [
                         "controller" => "visitor",
-                        "action"     => "index"
+                        "action"     => "searchingHost"
                     ]
                 );
     }

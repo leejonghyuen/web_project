@@ -1,3 +1,9 @@
+
+
+<!--  -->
+
+
+
 <form class="form-register width-limiter" method="post" action="/user/register">
 
     <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
@@ -14,21 +20,36 @@
             <div class="form-row">
                 <label>
                     <span>이메일</span>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value='grandmorning@hotmail.com' required>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>비밀번호</span>
-                    <input type="password" name="password">
+                    <input type="password" name="password" value='1q2w3e4r' required>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
-                    <span>핸드폰 번호</span>
-                    <input type="text" name="phone">
+                    <span>비밀번호 재입력</span>
+                    <input type="password" name="passwordRepeat" value='1q2w3e4r' required>
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>카카오톡 아이디</span>
+                    <input type="text" name="kakaoId" value='morningmemo' required>
+                </label>
+            </div>
+            
+            <div class="form-row">
+                <label>
+                    <span>주소</span>
+                    <span><button type='button' id="postcodify_search_button">주소 검색</button></span>
+                    <input type="text" class='postcodify_address' name="address" value='예술인아파트 10동 1508호' readonly>
                 </label>
             </div>
 
@@ -44,3 +65,5 @@
     </div>
 
 </form>
+
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>

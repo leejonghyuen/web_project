@@ -55,7 +55,8 @@ class User extends BaseModel
                 'id' => 'id',
                 'email' => 'email',
                 'password' => 'password',
-                'phone' => 'phone',
+                'kakao_id' => 'kakaoId',
+                'address' => 'address',
                 'created' => 'created',
                 'modified' => 'modified'
             );

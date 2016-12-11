@@ -5,7 +5,7 @@ use Modules\Models\Entities\Interphone as EntityInterphone;
 
 class Doorlock
 {
-    public function Open( $interphoneId)
+    public function Open( $hostId)
     {
         
     }

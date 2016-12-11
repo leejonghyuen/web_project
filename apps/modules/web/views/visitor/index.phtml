@@ -22,15 +22,6 @@
         value="<?= $this->security->getToken() ?>"/>
 
       <h2 class="h3">Channel</h2>
-      <form> <!-- action="controltOwnerView.php" method="post" -->
-        <div class="from-gruop">
-          <input class="form-control" type="text" id="createChannelId" placeholder="Create and connect the channel." value="" readonly="">
-          <label class="sr-only" for="createChannelId">Channel Id</label>
-        </div>
-        <button class="btn btn-default btn-sm btn-block" id="createChannel">
-          <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Create
-        </button>
-      </form>
       <button class="btn btn-default btn-sm btn-block" id="disconnectChannel">
         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Disconnect
       </button>

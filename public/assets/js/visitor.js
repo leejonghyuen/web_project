@@ -1,7 +1,6 @@
  'use strict';
 
 window.onload = function(){
-  var createChannelButton = $('#createChannel');
   var createChannelIdInput = $('#createChannelId');
   var disconnectChannelButton = $('#disconnectChannel');
   var securityToken = $('#securityToken');
@@ -12,25 +11,24 @@ window.onload = function(){
     remoteMediaTarget: 'callerRemoteVideo'
   });
   appCaller.on('connectChannel', function(channelId) {
-    createChannelIdInput.val( channelId);;
-  });
-  createChannelButton.on('click', function(event) {
-    event.preventDefault();
-    appCaller.createChannel();
-    appCaller.on('addLocalStream', function(){
-      var data = new Array();
-      data[ securityToken.attr("name")] = securityToken.val();
-      data = $.extend({}, data);
-      $.ajax({
-        url: "/visitor/opened",
-        method: 'POST',
-        dataType: 'json',
-        data: data
-      }).done(function( response) {
-        console.log( response.abc);
-      });
+    createChannelIdInput.val( channelId);
+    var data = new Array();
+    data[ securityToken.attr("name")] = securityToken.val();
+    data[ "channelId"] = channelId;
+    data = $.extend({}, data);
+    $.ajax({
+      url: "/interphone/calling",
+      method: 'POST',
+      dataType: 'json',
+      data: data
+    }).done(function( response) {
+      
     });
   });
+
+  event.preventDefault();
+  appCaller.createChannel();
+
   disconnectChannelButton.on('click', function(event){
     event.preventDefault();
     appCaller.disconnectChannel();

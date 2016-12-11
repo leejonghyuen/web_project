@@ -3,6 +3,8 @@ namespace Modules\Models\Services\Service;
 
 use Modules\Models\Entities\Interphone as EntityInterphone;
 
+use Modules\Models\Entities\User as EntityUser;
+
 class Interphone
 {
     public function GetUserInterphones( $ownerAddress)
@@ -10,24 +12,41 @@ class Interphone
         return EntityInterphone::find( $ownerAddress);
     }
 
-    public function GenerateUrl()
+    public function GenerateUrl( $channelId)
     {
-        // $url = 'host address' . $this->CreateInterphoneRoomUid();
-        $url = $this->CreateInterphoneRoomUid();
+        $di = \Phalcon\Di::getDefault();
+        $oRequest = $di->get('request');
+
+        $url = 'https://' . $oRequest->getHttpHost() . '/host?channelId=' . $channelId;
         return $url;
     }
 
-    public function NotificationToOwner( $ownerAddress, $interphoneType)
+    public function GetHostIdByAddress( $address)
     {
-
+        $oUser = EntityUser::findFirstByAddress( $address);
+        if( $oUser)
+            return $oUser->kakaoId;
+        else
+            return false;
     }
 
-    private function CreateInterphoneRoomUid()
+    private function NotificationToHost( $hostId, $url)
     {
-        $di = \Phalcon\Di::getDefault();
-        $oSecurity = $di->get('security');
-        $oRandom = $oSecurity->getRandom();
-
-        return $oRandom->base64Safe();
+        return $url;
     }
+
+    public function Calling( $hostId, $channelId)
+    {
+        $url = $this->GenerateUrl( $channelId);
+        return $this->NotificationToHost( $hostId, $url);
+    }
+
+    // private function CreateInterphoneRoomUid()
+    // {
+    //     $di = \Phalcon\Di::getDefault();
+    //     $oSecurity = $di->get('security');
+    //     $oRandom = $oSecurity->getRandom();
+
+    //     return $oRandom->base64Safe();
+    // }
 }

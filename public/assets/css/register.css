@@ -95,3 +95,7 @@
     font-weight: normal;
     color: #7b9d62;
 }
+
+.form-register-with-email .postcodify_address{
+    width: 350px;
+}
