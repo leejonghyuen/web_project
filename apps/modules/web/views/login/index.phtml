@@ -1,0 +1,38 @@
+<form class="form-login width-limiter" method="post" action="/user/login">
+    
+    <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
+        value="<?= $this->security->getToken() ?>"/>
+
+    <div class="form-log-in-with-email">
+
+        <div class="form-white-background">
+
+            <div class="form-title-row">
+                <h1>로그인</h1>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>이메일</span>
+                    <input type="email" name="email">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>비밀번호</span>
+                    <input type="password" name="password">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <button type="submit">로그인</button>
+            </div>
+
+            <a href="/register" class="form-create-an-account">회원가입하기</a>
+
+        </div>
+
+    </div>
+
+</form>

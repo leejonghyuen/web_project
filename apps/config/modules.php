@@ -5,9 +5,9 @@
 
 $application->registerModules(
     [
-        'frontend'  => [
-            'className' => 'Modules\Modules\Frontend\Module',
-            'path'      => __DIR__ . '/../modules/frontend/Module.php'
+        'web'  => [
+            'className' => 'Modules\Modules\Web\Module',
+            'path'      => __DIR__ . '/../modules/web/Module.php'
         ],
         'dashboard' => [
             'className' => 'Modules\Modules\Dashboard\Module',

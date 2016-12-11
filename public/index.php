@@ -2,10 +2,11 @@
 
 use Phalcon\Mvc\Application;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 try {
+    /**
+     * Include composer autoloader
+     */
+    require __DIR__ . "/../vendor/autoload.php";
 
     /**
      * Include services

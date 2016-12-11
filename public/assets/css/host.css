@@ -1,0 +1,48 @@
+#createChannel{
+  display:none;
+}
+.col-md-3{
+ display:none;
+}
+    .local-video {
+      width: 165px;
+      height: 165px;
+    }
+
+    .remote-video {
+      width: 320px;
+      height: 240px;
+    }
+
+    @media (min-width: 992px) {
+      .remote-video {
+        width: 640px;
+        height: 480px;
+      }
+    }
+
+    .chat-timeline {
+      height: 100px;
+      font-size: 10px;
+      overflow: auto;
+      background-color: lightgray;
+    }
+
+    .chat-timeline .local {
+      color: blue;
+    }
+
+    .chat-timeline .remote {
+      color: red;
+    }
+
+    .ownerView {
+        display: block;
+    }
+/*     div.removeForGuestView {
+  display: none;
+}
+
+div.removeForOwnerView {
+  display: none;
+} */
