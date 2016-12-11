@@ -13,6 +13,7 @@ class HostController extends ControllerBase
     		return $this->response->redirect('/login?channel_id=' . $channelId);
 
         $this->assets->addCss("css/host.css", true);
+        $this->assets->addCss("css/loader.css", true);
         $this->assets->addJs("js/playrtc.min.js", true);
         $this->assets->addJs("js/host.js", true);
 

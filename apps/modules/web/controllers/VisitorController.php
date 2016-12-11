@@ -22,6 +22,7 @@ class VisitorController extends ControllerBase
                 $this->session->set('hostId', $hostId);
 
                 $this->assets->addCss("css/visitor.css", true);
+                $this->assets->addCss("css/loader.css", true);
                 $this->assets->addJs("js/playrtc.min.js", true);
                 $this->assets->addJs("js/visitor.js", true);
 
