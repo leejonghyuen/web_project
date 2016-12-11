@@ -9,12 +9,11 @@ window.onload = function(){
     localMediaTarget: 'calleeLocalVideo',
     remoteMediaTarget: 'calleeRemoteVideo'
   });
-  connectChannelButton.addEventListener('click', function(event) {
-    var channelId = connectChannelIdInput.value;
-    event.preventDefault();
-    if (!channelId) {
-      return;
-    }
-    appCallee.connectChannel(channelId);
-  }, false);
+  var channelId = connectChannelIdInput.value;
+  event.preventDefault();
+  if (!channelId) {
+    return;
+  }
+  console.log(channelId);
+  appCallee.connectChannel(channelId);
 }

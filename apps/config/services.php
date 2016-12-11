@@ -93,3 +93,22 @@ $di['db'] = function () use ( $di) {
         ]
     );
 };
+
+/*
+    [PHP package for sending messages to Slack]
+
+    https://github.com/maknz/slack
+*/
+$di->setShared('slack', function () use ( $di){
+    $config = $di->getConfig();
+    $configSlack = $config->slack;
+
+    $settings = array(
+        'username' => $configSlack->username,
+        'link_names' => true
+    );
+
+    $client = new Maknz\Slack\Client( $configSlack->url, $settings);
+
+    return $client;
+});

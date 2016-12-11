@@ -32,13 +32,19 @@ class Interphone
 
     private function NotificationToHost( $hostId, $url)
     {
-        return $url;
+        $di = \Phalcon\Di::getDefault();
+        $oSlack = $di->get('slack');
+
+        $to = '@' . $hostId;
+        $msg = '방문객이 있습니다. 인터폰 : ' . $url;
+        
+        $oSlack->to( $to)->send( $msg);
     }
 
     public function Calling( $hostId, $channelId)
     {
         $url = $this->GenerateUrl( $channelId);
-        return $this->NotificationToHost( $hostId, $url);
+        $this->NotificationToHost( $hostId, $url);
     }
 
     // private function CreateInterphoneRoomUid()

@@ -1,5 +1,6 @@
 {
     "require": {
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "maknz/slack": "^1.7"
     }
 }

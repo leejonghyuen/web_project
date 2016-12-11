@@ -4,13 +4,7 @@
       <h2 class="h3">Callee</h2>
       <h3 class="h4">Connect Channel</h3>
       <form class="form-inline">
-        <div class="form-group">
-          <label class="sr-only" for="connectChannelId">Channel Id</label>
-          <input class="form-control" type="text" id="connectChannelId" placeholder="Enter the channel id." value="">
-        </div>
-        <button class="btn btn-default" id="connectChannel">
-          <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Connect Channel
-        </button>
+          <input class="form-control" type="hidden" id="connectChannelId" value="<?= $channelId ?>">
       </form>
 
       <video class="remote-video center-block" id="calleeRemoteVideo"></video>

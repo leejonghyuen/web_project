@@ -11,5 +11,7 @@ class HostController extends ControllerBase
         $this->assets->addCss("css/host.css", true);
         $this->assets->addJs("js/playrtc.min.js", true);
         $this->assets->addJs("js/host.js", true);
+
+        $this->view->channelId = $this->request->get('channelId');
     }
 }
