@@ -17,7 +17,7 @@ class Interphone
         $di = \Phalcon\Di::getDefault();
         $oRequest = $di->get('request');
 
-        $url = 'https://' . $oRequest->getHttpHost() . '/host?channelId=' . $channelId;
+        $url = 'https://' . $oRequest->getHttpHost() . '/host?channel_id=' . $channelId;
         return $url;
     }
 

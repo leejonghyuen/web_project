@@ -2,6 +2,9 @@
     
     <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
         value="<?= $this->security->getToken() ?>"/>
+    <?php if( isset( $channelId) && !is_null( $channelId)) { ?>
+        <input type="hidden" name="channelId" value="<?= $channelId ?>"/>
+    <?php } ?>
 
     <div class="form-log-in-with-email">
 

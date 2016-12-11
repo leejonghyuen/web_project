@@ -16,7 +16,7 @@ class UserController extends ControllerBase
                     $this->request->getPost('email'),
                     $this->request->getPost('password')
                 );
-                
+
                 if( $oUser !== false)
                 {
                     $this->session->set(
@@ -29,7 +29,10 @@ class UserController extends ControllerBase
                         ]
                     );
 
-                    return $this->response->redirect( '/');
+                    if( $this->request->getPost('channelId'))
+                        return $this->response->redirect('/host?channel_id='.$this->request->getPost('channelId'));
+                    else
+                        return $this->response->redirect( '/');
                 }
                 else
                 {
@@ -37,7 +40,10 @@ class UserController extends ControllerBase
                         "로그인에 실패하였습니다."
                     );
 
-                    return $this->response->redirect( '/login');
+                    if( $this->request->getPost('channelId'))
+                        return $this->response->redirect( '/login?channel_id='.$this->request->getPost('channelId'));
+                    else
+                        return $this->response->redirect( '/login');
                 }
             }
         }
