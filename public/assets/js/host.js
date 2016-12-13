@@ -13,6 +13,13 @@ window.onload = function(){
     event.preventDefault();
     $('#calleeRemoteVideo').show();
     $('#loading-container').hide();
+
+    $.ajax({
+      url: "/interphone/connected",
+      method: 'POST',
+      dataType: 'json',
+      data: {visitorIp: (dataChannel.peer.config.iceServers[0].url).split(':')[1]}
+    });
   });
 
   appCallee.on('disconnectChannel', function(peerid, uid, dataChannel) {

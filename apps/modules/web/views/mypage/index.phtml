@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    	<div class='row'>
+    		<h2 class="bd-title">인터폰 내역</h2>
+    	</div>
+    	<div class='row'>
+    		<div class="col-md-12">
+		    	<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>방문일</th>
+								<th>방문객 ip</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach( $interphoneHistories as $history) { ?>
+							<tr>
+								<td><?= $history['created'] ?></td>
+								<td><?= $history['visitorIp'] ?></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class='col-md-6'>
+
+    	<form method='post' action='/user/modify'>
+		    <input type="hidden" name="<?= $this->security->getTokenKey() ?>"
+        		value="<?= $this->security->getToken() ?>"/>
+
+	    	<div class='row'>
+	    		<h2 class="bd-title">내 정보 변경</h2>
+	    	</div>
+
+		    <div class="form-group row">
+		        <label class='col-xs-4 col-form-label'>이메일</label>
+		        <div class='col-xs-8'>
+		        	<input class='form-control' type="email" name="email" value='<?= $this->session->auth['email']; ?>' required>
+		        </div>
+		    </div>
+
+		    <div class="form-group row">
+		        <label class='col-xs-4 col-form-label'>비밀번호</label>
+		        <div class='col-xs-8'>
+		        	<input class='form-control' type="password" name="password" required>
+		        </div>
+		    </div>
+
+		    <div class="form-group row">
+		        <label class='col-xs-4 col-form-label'>비밀번호 재입력</label>
+		        <div class='col-xs-8'>
+		        	<input class='form-control' type="password" name="passwordRepeat" required>
+		        </div>
+		    </div>
+
+		    <div class="form-group row">
+		        <label class='col-xs-4 col-form-label'>카카오톡 아이디</label>
+		        <div class='col-xs-8'>
+		        	<input class='form-control' type="text" name="kakaoId" value='<?= $this->session->auth['kakaoId']; ?>' required>
+		        </div>
+		    </div>
+		    
+		    <div class="form-group row">
+		        <label class='col-xs-4 col-form-label'>주소</label>
+		        <div class='col-xs-8'>
+		        	<span><button class='form-control' type='button' id="postcodify_search_button">주소 검색</button></span>
+		        	<input type="text" class='form-control postcodify_address' name="address" value='<?= $this->session->auth['address']; ?>' readonly required>
+		        </div>
+		    </div>
+
+		    <div class="form-group row">
+		        <button class='form-control' type="submit">수정하기</button>
+		    </div>
+		</form>
+    </div>
+
+  </div>
+</div>
+
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>

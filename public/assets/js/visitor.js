@@ -1,11 +1,12 @@
- 'use strict';
+'use strict';
 
 window.onload = function(){
   var disconnectChannelButton = $('#disconnectChannel');
   var securityToken = $('#securityToken');
   var appCaller;
   appCaller = new PlayRTC({
-    projectKey: '60ba608a-e228-4530-8711-fa38004719c1'
+    projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
+    remoteMediaTarget: 'callerRemoteVideo'
   });
   appCaller.on('connectChannel', function(channelId) {
     var data = new Array();

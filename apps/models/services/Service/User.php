@@ -23,7 +23,7 @@ class User
         if( $oUser->save())
             return $oUser->id;
         else
-            return false;
+            return $oUser->getMessages();
     }
 
     public function Login( $id, $password)
@@ -47,13 +47,35 @@ class User
         return false;
     }
 
-    public function getLast()
+    public function Modify( $userId, array $userData)
     {
-    	return EntityUser::find(
-    			array(
-    				'order' => 'email DESC, phone',
-    				'limit' => 1
-    			)
-    		);
+        $di = \Phalcon\Di::getDefault();
+        $oSecurity = $di->get('security');
+
+        $oUser = EntityUser::findFirst( $userId);
+        if( $oUser)
+        {
+            if( is_null( $userData['password'])
+                || $userData['password'] === '')
+                unset( $userData['password']);
+            else
+                $userData['password'] = $oSecurity->hash( $userData['password']);
+
+            if( $oUser->update( $userData))
+                return $oUser->id;
+            else
+                return $oUser->getMessages();
+        }
+        return false;
+    }
+
+    public function GetProfile( $userId)
+    {
+    	return EntityUser::findFirst(
+            array(
+                $userId,
+                "columns" => "id,email,kakaoId,address"
+                )
+            );
     }
 }

@@ -34,4 +34,14 @@ class InterphoneController extends ControllerBase
             }
         }
     }
+
+    public function connectedAction()
+    {
+        $this->view->disable();
+
+        Services::getService('Interphone')->Connected(
+            $this->session->auth['id'],
+            $this->request->getPost('visitorIp')
+        );
+    }
 }

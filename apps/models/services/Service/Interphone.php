@@ -1,15 +1,18 @@
 <?php
 namespace Modules\Models\Services\Service;
 
-use Modules\Models\Entities\Interphone as EntityInterphone;
-
+use Modules\Models\Entities\InterphoneConnectionHistory as EntityInterphoneConnectionHistory;
 use Modules\Models\Entities\User as EntityUser;
 
 class Interphone
 {
-    public function GetUserInterphones( $ownerAddress)
+    public function GetHistory( $userId)
     {
-        return EntityInterphone::find( $ownerAddress);
+        $oUser = EntityUser::findFirst( $userId);
+        if( $oUser)
+            return $oUser->InterphoneConnectionHistory->toArray();
+        else
+            return false;
     }
 
     public function GenerateUrl( $channelId)
@@ -36,7 +39,7 @@ class Interphone
         $oSlack = $di->get('slack');
 
         $to = '@' . $hostId;
-        $msg = '방문객이 있습니다. 인터폰 : ' . $url;
+        $msg = $to . '님, 방문객이 있습니다. 인터폰 : ' . $url;
         
         $oSlack->to( $to)->send( $msg);
     }
@@ -47,12 +50,16 @@ class Interphone
         $this->NotificationToHost( $hostId, $url);
     }
 
-    // private function CreateInterphoneRoomUid()
-    // {
-    //     $di = \Phalcon\Di::getDefault();
-    //     $oSecurity = $di->get('security');
-    //     $oRandom = $oSecurity->getRandom();
+    public function Connected( $userId, $visitorIp)
+    {
+        $oEntityICH = new EntityInterphoneConnectionHistory();
 
-    //     return $oRandom->base64Safe();
-    // }
+        $oEntityICH->visitorIp = $visitorIp;
+        $oEntityICH->userId = $userId;
+
+        if( $oEntityICH->save())
+            return $oEntityICH->id;
+        else
+            return false;
+    }
 }

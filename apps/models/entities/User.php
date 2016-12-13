@@ -5,7 +5,8 @@ namespace Modules\Models\Entities;
 use Phalcon\Validation,
     Phalcon\Validation\Validator\Uniqueness as UniquenessValidator,
     Phalcon\Validation\Validator\Email as EmailValidator,
-    Phalcon\Validation\Validator\StringLength as StringLengthValidator;
+    Phalcon\Validation\Validator\StringLength as StringLengthValidator,
+    Phalcon\Validation\Validator\PresenceOf as PresenceOfValidator;
 
 class User extends BaseModel
 {
@@ -14,10 +15,10 @@ class User extends BaseModel
 
         $this->hasMany(
             'id',
-            '\Modules\Models\Entities\Interphone',
+            '\Modules\Models\Entities\InterphoneConnectionHistory',
             'userId',
             array(
-                'alias' => 'interphones'
+                'alias' => 'InterphoneConnectionHistory'
             )
         );
     }
@@ -29,19 +30,47 @@ class User extends BaseModel
         $validator = new Validation();
 
         $validator->add(
-            'email', // your field name
+            'email',
+            new PresenceOfValidator()
+        );
+        $validator->add(
+            'email',
             new EmailValidator()
         );
-
         $validator->add(
-            'email', // your field name
+            'email',
             new UniquenessValidator()
+        );
+        $validator->add(
+            'email',
+            new StringLengthValidator([
+                 'max' => 255
+            ])
         );
 
         $validator->add(
-            'email', // your field name
+            'address',
+            new PresenceOfValidator()
+        );
+        $validator->add(
+            'address',
             new StringLengthValidator([
-                 'max' => 255
+                 'max' => 300
+            ])
+        );
+
+        $validator->add(
+            'kakaoId',
+            new PresenceOfValidator()
+        );
+        $validator->add(
+            'kakaoId',
+            new UniquenessValidator()
+        );
+        $validator->add(
+            'kakaoId',
+            new StringLengthValidator([
+                 'max' => 100
             ])
         );
 
