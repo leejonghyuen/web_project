@@ -12,7 +12,18 @@ window.onload = function(){
   appCallee.on('addDataStream', function(peerid, uid, dataChannel) {
     event.preventDefault();
     $('#calleeRemoteVideo').show();
+    $('#open-door').show();
     $('#loading-container').hide();
+
+    $('#open-door').on('click', function(){
+      $.ajax({
+        url: "/interphone/opendoor",
+        method: 'POST',
+        dataType: 'json'
+      }).done(function(response){
+          alert('문이 열렸습니다.');
+      });
+    });
 
     $.ajax({
       url: "/interphone/connected",
