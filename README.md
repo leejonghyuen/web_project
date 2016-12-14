@@ -56,4 +56,11 @@ nginx setup :
 	        }
 	    }
 
-specification : 
+specification :
+	PHP
+	PhalconPHP
+	javascript
+	JQuery
+	bootstrap
+	MySQL
+	nginx
