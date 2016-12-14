@@ -1,5 +1,9 @@
 # web_project
 
+aws url : https://52.78.183.83
+
+git url : https://github.com/leejonghyuen/web_project
+
 required : 
 	> PHP 5.6
 	PhalconPHP Framework recently version(installation url : https://docs.phalconphp.com/en/latest/reference/install.html)
@@ -51,3 +55,5 @@ nginx setup :
 	            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 	        }
 	    }
+
+specification : 
