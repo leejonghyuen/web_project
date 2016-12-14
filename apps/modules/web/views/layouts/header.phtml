@@ -1,23 +1,26 @@
 <header>
-
 	<div class="header-limiter">
+		<div class='row'>
 
-		<h1><a href="/">Inter<span>phone</span></a></h1>
+			<h1><a href="/">Inter<span>phone</span></a></h1>
 
-		<nav>
-			<a href="/about">About</a>
-		</nav>
+			<nav>
+				<a href="/about">About</a>
+			</nav>
 
-		<ul>
-		<?php if( $this->session->has('auth') === false) { ?>
-			<li><a href='/login'>로그인</a></li>
-			<li><a href='/register'>회원가입</a></li>
-		<?php } else { ?>
-			<li><a href='/mypage'>마이페이지</a></li>
-			<li><a href='/user/logout'>로그아웃</a></li>
-		<?php } ?>
-		</ul>
+			<div>
+				<ul>
+				<?php if( $this->session->has('auth') === false) { ?>
+					<li><a href='/login'>로그인</a></li>
+					<li><a href='/register'>회원가입</a></li>
+				<?php } else { ?>
+					<li><a href='/mypage'>마이페이지</a></li>
+					<li><a href='/user/logout'>로그아웃</a></li>
+				<?php } ?>
+				</ul>
+			</div>
 
+		</div>
 	</div>
 
 </header>
