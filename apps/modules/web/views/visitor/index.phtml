@@ -20,16 +20,9 @@
       <input type="hidden" id='securityToken' name="<?= $this->security->getTokenKey() ?>"
         value="<?= $this->security->getToken() ?>"/>
 
-      <h2 class="h3">Channel</h2>
       <button class="btn btn-default btn-sm btn-block" id="disconnectChannel">
         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Disconnect
       </button>
-
-       <h3 class="h4 Connecth3">Connect</h3>
-       <button class="btn btn-default btn-sm" id="refreshChannel">
-        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
-      </button>
-       <div class="list-group channel-list" id="channelList"></div>
      </div>
      <div class="col-md-10">
       <div id="loading-container" class='col-md-12'>

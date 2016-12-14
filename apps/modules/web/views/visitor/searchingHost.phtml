@@ -1,15 +1,17 @@
 <!-- 검색 기능을 표시할 <div>를 생성한다 -->
-
-<div class='width-limiter'>
-  <form action='/visitor' class='form-searching-host' method='post'>
-    <div id="postcodify"></div>
-    <div class="form-row">
-        <label>
-            <input type="text" name="address" id="address" value="" readonly/>
-        </label>
+<div class='container'>
+    <div class='row'>
+        <div class='col-xs-5 col-centered'>
+            <h2>상대방 주소를 찾아주세요</h2>
+            <form action='/visitor' class='form-searching-host' method='post'>
+                <div id="postcodify"></div>
+                <div class="form-row">
+                    <input type="text" name="address" id="address" value="" readonly required/>
+                </div>
+                <input type='submit' value='연결하기'>
+            </form>
+        </div>
     </div>
-    <input type='submit' value='연결하기'>
-  </form>
 </div>
 
 <!-- 위에서 생성한 <div>에 검색 기능을 표시하고, 결과를 입력할 <input>들과 연동한다 -->

@@ -25,7 +25,7 @@ window.onload = function(){
 
   appCaller.on('addDataStream', function(peerid, uid, dataChannel) {
     event.preventDefault();
-    $('#loading-container').hide();
+    $('#loading-text').text('상대방과 인터폰이 연결되었습니다. 마이크를 통해 나를 알려주세요');
     alert('연결되었어요!');
   });
 
